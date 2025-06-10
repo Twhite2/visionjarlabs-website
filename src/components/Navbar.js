@@ -52,7 +52,7 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
             >
               <img
-                className="h-12 w-auto"
+                className="h-16 w-auto"
                 src="/images/20241028_084914.png"
                 alt="VisionLabs Logo"
                 onError={(e) => {

@@ -17,7 +17,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'Trading Bot',
+      title: 'Trading Bot(Jarvis)',
       description: 'An automated trading bot that manages trades with take-profit (TP), stop-loss (SL), and risk management features. Helps users automate their trading strategies with sophisticated risk controls.',
       image: '/images/tradingbot.png',
       technologies: ['Python', 'TensorFlow', 'Trading APIs', 'Cloud Infrastructure']
