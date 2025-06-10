@@ -97,15 +97,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
-                <span className="text-gray-400">123 Tech Avenue, Innovation District, SV 94103</span>
+                <span className="text-gray-400">Opolo housing estate, Bayelsa state, Nigeria</span>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-envelope mr-3 text-primary-400"></i>
-                <span className="text-gray-400">info@visionlabs.tech</span>
+                <span className="text-gray-400">visionjarlabs@gmail.com</span>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-phone mr-3 text-primary-400"></i>
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+2347050322778</span>
               </li>
             </ul>
           </motion.div>

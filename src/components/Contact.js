@@ -26,17 +26,17 @@ const Contact = () => {
     {
       icon: 'fa-map-marker-alt',
       title: 'Our Location',
-      details: '123 Tech Avenue, Innovation District, SV 94103'
+      details: 'Opolo housing estate, Bayelsa state, Nigeria'
     },
     {
       icon: 'fa-envelope',
       title: 'Email Us',
-      details: 'info@visionlabs.tech'
+      details: 'visionjarlabs@gmail.com'
     },
     {
       icon: 'fa-phone',
       title: 'Call Us',
-      details: '+1 (555) 123-4567'
+      details: '+2347050322778'
     }
   ];
 

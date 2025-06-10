@@ -12,21 +12,21 @@ const Projects = () => {
       id: 1,
       title: 'Verby Flow',
       description: 'A live call translation app enabling real-time language translation during calls. When a call comes in from China, the recipient hears it in their native language, revolutionizing global business communication.',
-      image: 'https://via.placeholder.com/600x400?text=Verby+Flow',
+      image: '/images/verbyflow.png',
       technologies: ['React Native', 'Node.js', 'WebRTC', 'AI Translation APIs']
     },
     {
       id: 2,
       title: 'Trading Bot',
       description: 'An automated trading bot that manages trades with take-profit (TP), stop-loss (SL), and risk management features. Helps users automate their trading strategies with sophisticated risk controls.',
-      image: 'https://via.placeholder.com/600x400?text=Trading+Bot',
+      image: '/images/tradingbot.png',
       technologies: ['Python', 'TensorFlow', 'Trading APIs', 'Cloud Infrastructure']
     },
     {
       id: 3,
       title: 'Oil and Gas Project',
       description: 'Providing technical input and implementation for an oil and gas initiative. Our expertise in complex technical solutions helped optimize operations and improve efficiency.',
-      image: 'https://via.placeholder.com/600x400?text=Oil+and+Gas',
+      image: '/images/oilandgas.png',
       technologies: ['IoT Sensors', 'Big Data Analytics', 'Cloud Computing', 'Dashboard Reporting']
     }
   ];
