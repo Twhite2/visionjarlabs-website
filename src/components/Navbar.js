@@ -43,7 +43,7 @@ const Navbar = () => {
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+        <div className="flex justify-between h-16 md:h-20">
           <div className="flex items-center">
             <motion.div 
               className="flex-shrink-0 flex items-center"
@@ -107,13 +107,11 @@ const Navbar = () => {
             </div>
           </div>
           {/* Mobile menu button */}
-          <div className="-mr-2 flex md:hidden">
-            <motion.button
+          <div className="-mr-2 flex items-center md:hidden">
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600 focus:outline-none transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-expanded="false"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 transition-colors duration-200"
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
@@ -125,40 +123,44 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               )}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
-      <motion.div 
-        className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ 
-          opacity: isOpen ? 1 : 0,
-          height: isOpen ? 'auto' : 0
-        }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              {item.name}
-            </a>
-          ))}
-          <motion.button 
-            className="mt-4 w-full px-4 py-3 rounded-md text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:shadow-lg transition-all duration-300"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-xl rounded-b-xl border-t border-gray-100 z-50"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.2 }}
           >
-            Get Started
-          </motion.button>
-        </div>
-      </motion.div>
+            <div className="px-2 pt-4 pb-6 space-y-2 sm:px-4">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className="block px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:text-primary-600 hover:bg-gray-50 transition duration-150"
+                  onClick={() => setIsOpen(false)}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "tween", duration: 0.2 }}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+              <motion.button 
+                className="mt-4 w-full px-4 py-3 rounded-md text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Get Started
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

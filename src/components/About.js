@@ -233,7 +233,6 @@ const About = () => {
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 animate={{ y: -15, rotate: 5 }}
-                initial={{ y: 0, rotate: 0 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ 
                   repeat: Infinity,

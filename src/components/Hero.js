@@ -131,7 +131,7 @@ const Hero = () => {
   };
   
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-secondary-900 via-primary-900 to-secondary-800">
+    <section id="home" className="relative min-h-screen pt-24 pb-24 md:pt-20 md:pb-12 flex items-center justify-center overflow-hidden bg-gradient-to-br from-secondary-900 via-primary-900 to-secondary-800">
       {/* Dynamic animated background elements */}
       <div className="absolute w-full h-full">
         {/* Animated gradient overlay */}
@@ -201,7 +201,7 @@ const Hero = () => {
         className="container mx-auto px-6 relative z-10"
         style={{ opacity, y }}
       >
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
           <div className="md:w-1/2">
             <motion.div
               initial={{ opacity: 0 }}
@@ -215,7 +215,7 @@ const Hero = () => {
                 transition={{ duration: 0.5 }}
               >
                 <motion.h1 
-                  className="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight tracking-tight"
+                  className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight tracking-tight"
                   initial={{ y: 100 }}
                   animate={{ y: 0 }}
                   transition={{ 
@@ -276,7 +276,7 @@ const Hero = () => {
           </div>
           
           <motion.div 
-            className="md:w-1/2 mt-12 md:mt-0 relative"
+            className="md:w-1/2 mt-8 mb-16 md:my-0 relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
@@ -371,16 +371,15 @@ const Hero = () => {
                 <OrbitDot angle={180} scrollYProgress={scrollYProgress} color="teal-400" />
                 <OrbitDot angle={240} scrollYProgress={scrollYProgress} color="blue-400" />
                 <OrbitDot angle={300} scrollYProgress={scrollYProgress} color="teal-400" />
-                
-                
               </div>
             </motion.div>
           </motion.div>
         </div>
       </motion.div>
       
+      {/* Scroll indicator fixed for mobile */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 1.5 }}
@@ -388,17 +387,10 @@ const Hero = () => {
       >
         <motion.div 
           className="w-10 h-16 border-2 border-white/60 rounded-full flex justify-center backdrop-blur-sm"
-          animate={{ y: 10 }}
-          transition={{ 
-            repeat: Infinity, 
-            repeatType: 'reverse', 
-            duration: 1.5, 
-            ease: 'easeInOut'
-          }}
         >
           <motion.div 
             className="w-2 h-4 bg-gradient-to-b from-primary-400 to-primary-500 rounded-full mt-2"
-            animate={{ opacity: 1, y: 15 }}
+            animate={{ y: 8 }}
             transition={{ 
               repeat: Infinity,
               repeatType: 'reverse',
@@ -408,7 +400,7 @@ const Hero = () => {
           />
         </motion.div>
         <motion.p 
-          className="text-white/80 text-sm mt-2 text-center font-light tracking-widest uppercase"
+          className="text-white/80 text-xs md:text-sm mt-2 text-center font-light tracking-widest uppercase"
           animate={{ opacity: 1 }}
           initial={{ opacity: 0.6 }}
           transition={{ 
@@ -418,7 +410,7 @@ const Hero = () => {
             ease: 'easeInOut'
           }}
         >
-          Scroll Down
+          SCROLL DOWN
         </motion.p>
       </motion.div>
     </section>
