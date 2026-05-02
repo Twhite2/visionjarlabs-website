@@ -5,40 +5,40 @@ import { Rocket, Star, Users, Lightbulb, TrendingUp, Globe } from 'lucide-react'
 const About = () => {
   const [activeTab, setActiveTab] = useState('mission');
   const { scrollYProgress } = useViewportScroll();
-  
+
   // Stats data for achievements section
   const stats = [
     { number: "200+", label: "Projects Completed", icon: Rocket },
     { number: "95%", label: "Client Satisfaction", icon: Star },
     { number: "40+", label: "Expert Team Members", icon: Users }
   ];
-  
+
   // Enhanced scroll-based animations
   const scaleAnim = useTransform(scrollYProgress, [0.1, 0.3], [0.8, 1.05]);
   const opacityAnim = useTransform(scrollYProgress, [0.1, 0.3], [0.3, 1]);
   const yAnim = useTransform(scrollYProgress, [0.1, 0.3], [100, 0]);
   const blurAnim = useTransform(scrollYProgress, [0.1, 0.25], [5, 0]);
-  
+
   // Animated background positions
   const bgX = useMotionValue(0);
   const bgY = useMotionValue(0);
-  
+
   const handleMouseMove = (e) => {
     const { clientX, clientY, currentTarget } = e;
     const { left, top, width, height } = currentTarget.getBoundingClientRect();
-    
+
     // Calculate normalized mouse position
     const x = (clientX - left) / width - 0.5;
     const y = (clientY - top) / height - 0.5;
-    
+
     // Update motion values with slight delay for smooth movement
     bgX.set(x * 20); // Multiplier controls movement intensity
     bgY.set(y * 20);
   };
-  
+
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       className="py-32 relative overflow-hidden bg-transparent"
       onMouseMove={handleMouseMove}
     >
@@ -46,14 +46,14 @@ const About = () => {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute w-full h-full bg-grid-pattern opacity-10"></div>
       </div>
-      
+
       {/* Decorative blurred gradient circles */}
-      <motion.div 
+      <motion.div
         className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary-500/20 to-primary-700/10 blur-[80px] opacity-60"
         style={{ x: useTransform(bgX, v => v * -1), y: useTransform(bgY, v => v * -1) }}
         animate={{ scale: 1.1, opacity: 0.6 }}
         initial={{ scale: 1, opacity: 0.4 }}
-        transition={{ 
+        transition={{
           repeat: Infinity,
           repeatType: 'reverse',
           duration: 10,
@@ -61,13 +61,13 @@ const About = () => {
           type: 'tween'
         }}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="absolute bottom-40 left-[5%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-secondary-500/20 to-blue-500/10 blur-[60px] opacity-40"
         style={{ x: useTransform(bgX, v => v * 0.5), y: useTransform(bgY, v => v * 0.5) }}
         animate={{ scale: 0.9, opacity: 0.5 }}
         initial={{ scale: 1, opacity: 0.3 }}
-        transition={{ 
+        transition={{
           repeat: Infinity,
           repeatType: 'reverse',
           duration: 8,
@@ -76,13 +76,13 @@ const About = () => {
           type: 'tween'
         }}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="absolute top-[30%] left-[25%] w-[300px] h-[300px] rounded-full bg-gradient-to-r from-yellow-500/10 to-secondary-500/20 blur-[50px] opacity-30"
         style={{ x: useTransform(bgX, v => v * 1.2), y: useTransform(bgY, v => v * 1.2) }}
         animate={{ scale: 1.2, opacity: 0.4 }}
         initial={{ scale: 1, opacity: 0.2 }}
-        transition={{ 
+        transition={{
           repeat: Infinity,
           repeatType: 'reverse',
           duration: 12,
@@ -116,7 +116,7 @@ const About = () => {
         />
       ))}
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           className="text-center mb-24"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ const About = () => {
           style={{ y: yAnim, filter: `blur(${blurAnim}px)` }}
         >
           {/* Premium animated subtitle with sparkle effect */}
-          <motion.div 
+          <motion.div
             className="relative inline-block mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -133,11 +133,11 @@ const About = () => {
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
           >
             <div className="relative z-10">
-              <motion.span 
+              <motion.span
                 className="inline-block bg-gradient-to-r from-primary-400 to-secondary-400 text-transparent bg-clip-text font-semibold tracking-widest uppercase text-sm px-6 py-2"
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0.8 }}
-                transition={{ 
+                transition={{
                   repeat: Infinity,
                   repeatType: 'reverse',
                   duration: 3,
@@ -149,12 +149,12 @@ const About = () => {
               </motion.span>
             </div>
             {/* Animated sparkle decorative elements */}
-            <motion.div 
+            <motion.div
               className="absolute -top-1 -left-2 w-4 h-4 bg-primary-400 rounded-full opacity-60"
               animate={{ scale: [0, 1, 0], opacity: [0, 0.8, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             />
-            <motion.div 
+            <motion.div
               className="absolute -bottom-1 -right-2 w-3 h-3 bg-secondary-400 rounded-full opacity-60"
               animate={{ scale: [0, 1, 0], opacity: [0, 0.8, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 2, delay: 1 }}
@@ -163,7 +163,7 @@ const About = () => {
 
           {/* Premium animated title with enhanced typography and glow */}
           <div className="relative">
-            <motion.h2 
+            <motion.h2
               className="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -174,11 +174,11 @@ const About = () => {
                 <span className="relative z-10 text-white drop-shadow-sm font-display">
                   Visionjar <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-300">Labs</span>
                 </span>
-                <motion.span 
+                <motion.span
                   className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 opacity-30 blur-md rounded-lg"
                   animate={{ opacity: 0.4 }}
                   initial={{ opacity: 0.2 }}
-                  transition={{ 
+                  transition={{
                     repeat: Infinity,
                     repeatType: 'reverse',
                     duration: 3,
@@ -189,7 +189,7 @@ const About = () => {
               </span>
             </motion.h2>
             {/* Animated underline with gradient and glow */}
-            <motion.div 
+            <motion.div
               className="w-24 h-1.5 bg-gradient-to-r from-primary-500 to-secondary-400 mx-auto mb-8 rounded-full shadow-lg relative overflow-hidden"
               initial={{ width: 0, opacity: 0 }}
               whileInView={{ width: 150, opacity: 1 }}
@@ -205,7 +205,7 @@ const About = () => {
           </div>
 
           {/* Enhanced description text */}
-          <motion.p 
+          <motion.p
             className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +218,7 @@ const About = () => {
 
         <div className="flex flex-col lg:flex-row items-center gap-16 mt-8">
           {/* Enhanced image section with 3D-like effects */}
-          <motion.div 
+          <motion.div
             className="lg:w-1/2 mb-16 lg:mb-0 px-4"
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -228,14 +228,14 @@ const About = () => {
           >
             <div className="relative mx-auto max-w-lg">
               {/* Floating decorative elements */}
-              <motion.div 
+              <motion.div
                 className="absolute -top-12 -left-12 w-24 h-24 bg-gradient-to-br from-primary-600/80 to-primary-400/80 rounded-2xl z-10 backdrop-blur-sm shadow-lg border border-white/20"
                 initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 animate={{ y: -15, rotate: 5 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ 
+                transition={{
                   repeat: Infinity,
                   repeatType: 'reverse',
                   duration: 4,
@@ -254,9 +254,9 @@ const About = () => {
                   </svg>
                 </div>
               </motion.div>
-              
+
               {/* Animated border frame */}
-              <motion.div 
+              <motion.div
                 className="absolute -inset-4 border-2 border-primary-400/50 rounded-2xl z-0"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -265,16 +265,16 @@ const About = () => {
                 whileHover={{ borderColor: "rgba(99, 102, 241, 0.8)" }}
               >
                 {/* Animated corner accents */}
-                <motion.div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary-500 rounded-tl-lg" 
+                <motion.div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary-500 rounded-tl-lg"
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <motion.div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-secondary-500 rounded-br-lg" 
+                <motion.div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-secondary-500 rounded-br-lg"
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 />
               </motion.div>
-              
+
               {/* Main image with premium effects */}
               <div className="relative z-10 overflow-hidden rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] group">
                 <motion.div
@@ -282,9 +282,9 @@ const About = () => {
                   transition={{ duration: 0.7, ease: "easeOut" }}
                   className="relative"
                 >
-                  <img 
-                    src="/images/20241025_163228.jpg" 
-                    alt="About Visionjar Labs" 
+                  <img
+                    src="/images/20241025_163228.jpg"
+                    alt="About Visionjar Labs"
                     className="w-full rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:filter group-hover:brightness-110"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -292,39 +292,39 @@ const About = () => {
                       target.src = "https://via.placeholder.com/600x400?text=About+Visionjar+Labs";
                     }}
                   />
-                  
+
                   {/* Layered image overlays for depth */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-secondary-900/80 via-secondary-900/20 to-transparent opacity-60 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-700"
                     whileHover={{ opacity: 0.3 }}
                   />
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-700 mix-blend-overlay"
                   />
-                  
+
                   {/* Image caption overlay that appears on hover */}
-                  <motion.div 
+                  <motion.div
                     className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-secondary-900/90 to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
                     initial={{ y: 100 }}
                     whileInView={{ y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    <motion.p 
+                    <motion.p
                       className="text-white/90 font-medium text-lg"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 1.3 }}
                     >
-                      Our headquarters in Silicon Valley
+                      Our headquarters in Opolo Bayelsa State.
                     </motion.p>
                   </motion.div>
                 </motion.div>
               </div>
-              
+
               {/* Floating accent shapes */}
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-10 -right-10 w-24 h-24 bg-gradient-to-br from-secondary-500/80 to-secondary-400/80 rounded-full z-10 shadow-lg overflow-hidden backdrop-blur-sm border border-white/20"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -336,7 +336,7 @@ const About = () => {
                   scale: { repeat: Infinity, repeatType: 'reverse', duration: 2.5, ease: "easeInOut" }
                 }}
               >
-                <motion.div 
+                <motion.div
                   className="w-full h-full bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-full"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -346,15 +346,15 @@ const About = () => {
           </motion.div>
 
           {/* Enhanced content section with tabs */}
-          <motion.div 
-            className="lg:w-1/2 text-white"
+          <motion.div
+            className="w-full lg:w-1/2 text-white px-2 sm:px-4 lg:px-8"
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, type: "spring", stiffness: 40, damping: 20 }}
           >
             {/* Interactive tab navigation */}
-            <motion.div 
+            <motion.div
               className="flex mb-10 border-b border-gray-700/30 pb-2 overflow-x-auto scrollbar-hide"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +371,7 @@ const About = () => {
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                   {activeTab === tab && (
-                    <motion.div 
+                    <motion.div
                       className="absolute bottom-[-2px] left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500"
                       layoutId="activetab"
                       initial={{ opacity: 0 }}
@@ -382,9 +382,9 @@ const About = () => {
                 </motion.button>
               ))}
             </motion.div>
-            
+
             {/* Tab content with animated transitions */}
-            <div className="relative h-[400px]">
+            <div className="relative min-h-[550px] lg:min-h-[400px]">
               <AnimatePresence mode="wait">
                 {activeTab === 'mission' && (
                   <motion.div
@@ -393,11 +393,11 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0"
+                    className="w-full"
                   >
                     <h3 className="text-3xl font-bold text-white mb-6 relative inline-block">
                       Our Mission
-                      <motion.span 
+                      <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-primary-300 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
@@ -405,11 +405,11 @@ const About = () => {
                       />
                     </h3>
                     <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                      At Visionjar Labs, we're dedicated to providing <span className="text-primary-300 font-medium">innovative technology solutions</span> that transform how businesses operate. 
-                      Our mission is to empower organizations with cutting-edge web development, technical expertise, and investment 
+                      At Visionjar Labs, we're dedicated to providing <span className="text-primary-300 font-medium">innovative technology solutions</span> that transform how businesses operate.
+                      Our mission is to empower organizations with cutting-edge web development, technical expertise, and investment
                       platforms that drive growth and success in the digital era.
                     </p>
-                    
+
                     {/* Mission highlights with icons */}
                     <div className="space-y-5 mt-8">
                       {[
@@ -417,14 +417,14 @@ const About = () => {
                         { icon: TrendingUp, text: 'Drive measurable business growth with data-driven solutions' },
                         { icon: Globe, text: 'Create accessible technology that empowers global connectivity' }
                       ].map((item, i) => (
-                        <motion.div 
-                          key={i} 
+                        <motion.div
+                          key={i}
                           className="flex items-start"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.5, delay: 0.3 + (i * 0.2) }}
                         >
-                          <div className="mr-4 mt-1 bg-gradient-to-br from-primary-500 to-primary-700 p-3 rounded-lg shadow-lg flex items-center justify-center w-10 h-10">
+                          <div className="shrink-0 mr-4 mt-1 bg-gradient-to-br from-primary-500 to-primary-700 p-3 rounded-lg shadow-lg flex items-center justify-center w-10 h-10">
                             <item.icon className="text-white w-5 h-5" />
                           </div>
                           <p className="text-gray-300">{item.text}</p>
@@ -433,7 +433,7 @@ const About = () => {
                     </div>
                   </motion.div>
                 )}
-                
+
                 {activeTab === 'approach' && (
                   <motion.div
                     key="approach"
@@ -441,11 +441,11 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0"
+                    className="w-full"
                   >
                     <h3 className="text-3xl font-bold text-white mb-6 relative inline-block">
                       Our Approach
-                      <motion.span 
+                      <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-400 to-secondary-300 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
@@ -453,11 +453,11 @@ const About = () => {
                       />
                     </h3>
                     <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                      We combine <span className="text-secondary-300 font-medium">creativity, technical excellence</span>, and a deep understanding of business needs to deliver solutions 
-                      that exceed expectations. Our team of experts works closely with clients to understand their unique challenges 
+                      We combine <span className="text-secondary-300 font-medium">creativity, technical excellence</span>, and a deep understanding of business needs to deliver solutions
+                      that exceed expectations. Our team of experts works closely with clients to understand their unique challenges
                       and create custom solutions that drive real results.
                     </p>
-                    
+
                     {/* Approach methodology with progress bars */}
                     <div className="space-y-6 mt-8">
                       {[
@@ -471,7 +471,7 @@ const About = () => {
                             <span className="text-gray-300">{item.percentage}%</span>
                           </div>
                           <div className="w-full h-3 bg-gray-700/30 rounded-full overflow-hidden">
-                            <motion.div 
+                            <motion.div
                               className={`h-full bg-gradient-to-r ${item.color} rounded-full`}
                               initial={{ width: 0 }}
                               animate={{ width: `${item.percentage}%` }}
@@ -483,7 +483,7 @@ const About = () => {
                     </div>
                   </motion.div>
                 )}
-                
+
                 {activeTab === 'values' && (
                   <motion.div
                     key="values"
@@ -491,11 +491,11 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0"
+                    className="w-full"
                   >
                     <h3 className="text-3xl font-bold text-white mb-6 relative inline-block">
                       Our Values
-                      <motion.span 
+                      <motion.span
                         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-300 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
@@ -506,7 +506,7 @@ const About = () => {
                       Our values shape everything we do at Visionjar Labs. We believe in <span className="text-blue-300 font-medium">integrity, excellence, innovation</span>,
                       and putting our clients at the center of our work.
                     </p>
-                    
+
                     {/* Values cards with hover effects */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                       {[
@@ -532,10 +532,10 @@ const About = () => {
                 )}
               </AnimatePresence>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-24">
               {stats.map((stat, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="relative glass-panel p-8 rounded-xl text-center overflow-hidden group hover:border-primary-500/50 transition-colors"
                   initial={{ opacity: 0, y: 40 }}
@@ -546,17 +546,17 @@ const About = () => {
                 >
                   {/* Background gradient effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-secondary-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   {/* Stat icon */}
-                  <motion.div 
+                  <motion.div
                     className="w-16 h-16 mx-auto mb-5 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white shadow-lg relative z-10"
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
                     <stat.icon size={32} />
                   </motion.div>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className="relative z-10"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -568,7 +568,7 @@ const About = () => {
                     </div>
                     <div className="text-xl font-bold text-surface-200 group-hover:text-surface-950 transition-colors duration-500 mb-3">{stat.label}</div>
                   </motion.div>
-                  
+
                   {/* Decorative corner */}
                   <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
                     <div className="absolute top-0 right-0 bg-gradient-to-bl from-primary-400 to-primary-500 w-10 h-10 transform rotate-45 translate-x-[20px] translate-y-[-20px]"></div>
