@@ -8,13 +8,15 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { InteractiveBackground } from './components/InteractiveBackground';
 
 // Import Framer Motion for page transitions
 import { motion } from 'framer-motion';
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans min-h-screen bg-surface-950 text-surface-50 selection:bg-primary-500/30 relative">
+      <InteractiveBackground />
       <Navbar />
       
       <motion.div

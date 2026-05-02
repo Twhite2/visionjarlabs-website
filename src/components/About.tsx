@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useViewportScroll, useTransform, AnimatePresence, useMotionValue } from 'framer-motion';
+import { Rocket, Star, Users, Lightbulb, TrendingUp, Globe } from 'lucide-react';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('mission');
@@ -7,9 +8,9 @@ const About = () => {
   
   // Stats data for achievements section
   const stats = [
-    { number: "200+", label: "Projects Completed", icon: "🚀" },
-    { number: "95%", label: "Client Satisfaction", icon: "⭐" },
-    { number: "40+", label: "Expert Team Members", icon: "👥" }
+    { number: "200+", label: "Projects Completed", icon: Rocket },
+    { number: "95%", label: "Client Satisfaction", icon: Star },
+    { number: "40+", label: "Expert Team Members", icon: Users }
   ];
   
   // Enhanced scroll-based animations
@@ -38,7 +39,7 @@ const About = () => {
   return (
     <section 
       id="about" 
-      className="py-32 relative overflow-hidden bg-gradient-to-b from-gray-900 to-secondary-900"
+      className="py-32 relative overflow-hidden bg-transparent"
       onMouseMove={handleMouseMove}
     >
       {/* Premium animated background elements */}
@@ -170,8 +171,8 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
             >
               About <span className="inline-block relative">
-                <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-300 drop-shadow-sm">
-                  Vision<span className="text-white">Labs</span>
+                <span className="relative z-10 text-white drop-shadow-sm font-display">
+                  Visionjar <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-300">Labs</span>
                 </span>
                 <motion.span 
                   className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 opacity-30 blur-md rounded-lg"
@@ -244,8 +245,7 @@ const About = () => {
                     scale: { duration: 0.3 },
                     rotate: { duration: 0.3 }
                   },
-                  delay: 0.4,
-                  ease: "easeInOut"
+                  delay: 0.4
                 }}
               >
                 <div className="w-full h-full flex items-center justify-center text-white">
@@ -284,11 +284,12 @@ const About = () => {
                 >
                   <img 
                     src="/images/20241025_163228.jpg" 
-                    alt="About VisionLabs" 
+                    alt="About Visionjar Labs" 
                     className="w-full rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:filter group-hover:brightness-110"
                     onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://via.placeholder.com/600x400?text=About+VisionLabs";
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "https://via.placeholder.com/600x400?text=About+Visionjar+Labs";
                     }}
                   />
                   
@@ -404,7 +405,7 @@ const About = () => {
                       />
                     </h3>
                     <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                      At VisionLabs, we're dedicated to providing <span className="text-primary-300 font-medium">innovative technology solutions</span> that transform how businesses operate. 
+                      At Visionjar Labs, we're dedicated to providing <span className="text-primary-300 font-medium">innovative technology solutions</span> that transform how businesses operate. 
                       Our mission is to empower organizations with cutting-edge web development, technical expertise, and investment 
                       platforms that drive growth and success in the digital era.
                     </p>
@@ -412,9 +413,9 @@ const About = () => {
                     {/* Mission highlights with icons */}
                     <div className="space-y-5 mt-8">
                       {[
-                        { icon: '💡', text: 'Revolutionize digital experiences through creative innovation' },
-                        { icon: '📈', text: 'Drive measurable business growth with data-driven solutions' },
-                        { icon: '🌎', text: 'Create accessible technology that empowers global connectivity' }
+                        { icon: Lightbulb, text: 'Revolutionize digital experiences through creative innovation' },
+                        { icon: TrendingUp, text: 'Drive measurable business growth with data-driven solutions' },
+                        { icon: Globe, text: 'Create accessible technology that empowers global connectivity' }
                       ].map((item, i) => (
                         <motion.div 
                           key={i} 
@@ -424,7 +425,7 @@ const About = () => {
                           transition={{ duration: 0.5, delay: 0.3 + (i * 0.2) }}
                         >
                           <div className="mr-4 mt-1 bg-gradient-to-br from-primary-500 to-primary-700 p-3 rounded-lg shadow-lg flex items-center justify-center w-10 h-10">
-                            <span className="text-white text-xl">{item.icon}</span>
+                            <item.icon className="text-white w-5 h-5" />
                           </div>
                           <p className="text-gray-300">{item.text}</p>
                         </motion.div>
@@ -502,7 +503,7 @@ const About = () => {
                       />
                     </h3>
                     <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                      Our values shape everything we do at VisionLabs. We believe in <span className="text-blue-300 font-medium">integrity, excellence, innovation</span>,
+                      Our values shape everything we do at Visionjar Labs. We believe in <span className="text-blue-300 font-medium">integrity, excellence, innovation</span>,
                       and putting our clients at the center of our work.
                     </p>
                     
@@ -536,7 +537,7 @@ const About = () => {
               {stats.map((stat, index) => (
                 <motion.div 
                   key={index}
-                  className="relative bg-white p-8 rounded-xl shadow-xl border border-gray-100 text-center overflow-hidden group"
+                  className="relative glass-panel p-8 rounded-xl text-center overflow-hidden group hover:border-primary-500/50 transition-colors"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -552,7 +553,7 @@ const About = () => {
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <span className="text-3xl">{stat.icon}</span>
+                    <stat.icon size={32} />
                   </motion.div>
                   
                   <motion.div 
@@ -565,7 +566,7 @@ const About = () => {
                     <div className="text-5xl font-extrabold text-secondary-800 mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600">
                       {stat.number}
                     </div>
-                    <div className="text-xl font-bold text-gray-800 mb-3">{stat.label}</div>
+                    <div className="text-xl font-bold text-surface-200 group-hover:text-surface-950 transition-colors duration-500 mb-3">{stat.label}</div>
                   </motion.div>
                   
                   {/* Decorative corner */}
