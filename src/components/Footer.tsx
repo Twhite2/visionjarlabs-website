@@ -90,8 +90,8 @@ const Footer = () => {
         >
           <p>© {new Date().getFullYear()} Visionjar Labs. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>
+            <a href="/" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
+            <a href="/" className="hover:text-primary-400 transition-colors">Terms of Service</a>
           </div>
         </motion.div>
       </div>

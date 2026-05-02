@@ -133,9 +133,9 @@ const Contact = () => {
                 
                 <div className="flex gap-4">
                   {[MessageSquare, Share2, LinkIcon].map((Icon, i) => (
-                    <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-surface-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all">
+                    <button key={i} type="button" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-surface-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all">
                       <Icon size={18} />
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
